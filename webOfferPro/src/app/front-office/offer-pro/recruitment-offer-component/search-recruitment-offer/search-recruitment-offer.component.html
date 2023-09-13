@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="iq-card">
+            <div class="iq-card-header d-flex justify-content-between">
+               <div class="iq-header-title">
+                  <h4 class="card-title">Filter</h4>
+               </div>
+            </div>
+            <div class="iq-card-body">
+               <div class="row">
+                  <!--<div class="col-3">
+                     <h6>Email</h6>
+                  </div>
+                  <div class="col-9">
+                     <p class="mb-0">AAAAAAAAAAA</p>
+                  </div>--> 
+
+
+
+
+
+                  <div class="col-12">
+                     <span (click)="onClickAllOffer()" class="text-primary cursor-pointer"><i class="fa fa-newspaper-o"></i><span class="ml-1">All</span></span>
+                  </div>
+
+                  <div class="col-12">
+                     <a href="#search-by-typeOffer" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false">
+                        <i class="ri-pages-line"></i><span>Type Offer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="search-by-typeOffer" class="iq-submenu collapse">
+                         <li *ngFor="let typeOffer of this.recruitmentService.listTypeOffer" >
+                            <span (click)="onClickTypeOffer(typeOffer.value)" class="text-primary cursor-pointer">
+                         <i class="ri-login-box-line"></i>{{typeOffer.label}}</span></li>  
+                     </ul>
+                  </div>
+                  <div class="col-12">
+                     <a href="#search-by-ContractType" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Type Contract</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="search-by-ContractType" class="iq-submenu collapse" >
+                        <li *ngFor="let contractType of this.recruitmentService.listContractType" ><span (click)="onClickContractType(contractType.value)" class="text-primary cursor-pointer"><i class="ri-login-box-line"></i>{{contractType.label}}</span></li>
+                     </ul>
+                  </div>
+                  <div class="col-12">
+                     <a href="#search-by-StudyLevel" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Study Level</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="search-by-StudyLevel" class="iq-submenu collapse" >
+                        <li *ngFor="let studyLevel of this.recruitmentService.listStudyLevel" ><span  (click)="onClickStudyLevel(studyLevel.value)" class="text-primary cursor-pointer"><i class="ri-login-box-line"></i>{{studyLevel.label}}</span></li>
+                     </ul>
+                  </div>
+                  <div class="col-12">
+                     <a href="#search-by-ActivityArea" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Activity Area</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="search-by-ActivityArea" class="iq-submenu collapse" >
+                        <li *ngFor="let activityArea of this.companyService.listActivityArea" ><span (click)="onClickActivityArea(activityArea.value)" class="text-primary cursor-pointer"><i class="ri-login-box-line"></i>{{activityArea.label}}</span></li>
+                     </ul>
+                  </div>
+                  <div class="col-12">
+                     <a href="#search-by-StateRegion" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>State Region</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="search-by-StateRegion" class="iq-submenu collapse" >
+                        <li *ngFor="let stateRegion of this.accountService.listStateRegion" ><span  (click)="onClickStateRegion(stateRegion.value)" class="text-primary cursor-pointer"><i class="ri-login-box-line"></i>{{stateRegion.label}}</span></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+       </div>
+    </div>
+    <div class="col-lg-8">
+         <div class="row">
+             <div class="col-sm-12">
+                  <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                          <h4 class="card-title">Recruitments Offers</h4>
+                     </div>
+                  </div>
+             </div>
+
+             <div class="col-sm-12">
+               <div class="iq-card"  *ngFor="let recruitmentOfferDto of this.recruitmentOffersDtoFilter">
+                  <div class="iq-card-body">
+                     <ul class="notification-list m-0 p-0">
+                        <li class="d-flex align-items-center">
+                           <!--<div class="user-img img-fluid"><img src="assets/images/user/01.jpg" alt="story-img" class="rounded-circle avatar-40"></div>-->
+                           
+                           <div class="user-img img-fluid"><img [src]="recruitmentOfferDto.campanyDto.logo.downloadURL" alt="story-img" class="rounded-circle avatar-40"></div>
+
+
+                           <div class="media-support-info ml-2">
+                              <h6 class="cursor-pointer" (click)="goToDetailed(recruitmentOfferDto.id,recruitmentOfferDto.title)">{{recruitmentOfferDto.title}}</h6>
+                              <div class="d-flex  mt-1">
+                                 <div class="ml-1">
+                                    <p class="mb-0"><i class="fa fa-building-o mr-1 text-primary"></i> {{recruitmentOfferDto.campanyDto.name}}</p>
+                                 </div>
+                                 <div class="ml-2">
+                                    <p class="mb-0"><i class="fa fa-clock-o mr-1 text-primary"></i> {{ this.recruitmentService.formatDateAgo(  this.recruitmentService.toDate (recruitmentOfferDto.startDateTime.toString()))   }} ago</p>
+                                 </div>
+                              </div>
+                              <div class="d-flex mt-1">
+                                 <div class="ml-1">
+                                    <p class="mb-0"><i class="fa fa-map-marker mr-1 text-primary"></i> {{recruitmentOfferDto.campanyDto.state}}, {{recruitmentOfferDto.campanyDto.city}}, {{recruitmentOfferDto.campanyDto.address}}</p>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                           <div (click)="goToDetailed(recruitmentOfferDto.id,recruitmentOfferDto.title)" class="d-flex align-items-center mr-3 cursor-pointer">
+                              <i class="ri-eye-fill mr-2 text-primary"></i>
+                              <span class="mr-3 iq-notify text-primary">View</span>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+
+
+
+
+         </div>
+    </div>
+</div>

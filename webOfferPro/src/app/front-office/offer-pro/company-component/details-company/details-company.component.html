@@ -1,0 +1,254 @@
+<div class="container">
+    <div class="row">
+       <div class="col">
+        <div class="iq-card">
+            <div class="iq-card-body profile-page p-0">
+               <div class="profile-header">
+                  <div class="cover-container"> 
+                       <img   [src]="this.companyService.companyDto.cover.downloadURL" alt="profile-bg" class="rounded img-fluid"> 
+                     <ul class="header-nav d-flex flex-wrap justify-end p-0 m-0">
+                        <li><span (click)="onClickOnUploadCoverCompany()" class="cursor-pointer custom-round"  ><i class="ri-pencil-line"></i></span></li>
+                        <li><span (click)="onClickToGoEditCompany()"   class="cursor-pointer custom-round"   ><i class="ri-settings-4-line"></i></span></li>
+                     </ul>
+                  </div>
+
+                  <div class="user-detail text-center mb-3">
+                     <div class="profile-img-edit">
+                        <div class="photo-profile-container circle box-shad">
+                           <img   [src]="this.companyService.companyDto.logo.downloadURL" alt="photo-profile-container"  />
+                        </div>
+                        <div   class="p-image" (click)="onClickOnUploadLogoCompany()">
+                           <i class="ri-pencil-line upload-button"></i> 
+                        </div>
+                     </div>
+                     <div class="profile-detail">
+                        <h3 class="">{{this.companyService.companyDto.name}}</h3>
+                     </div>
+                  </div>
+
+
+
+                  <div class="profile-info p-4 d-flex align-items-center justify-content-between position-relative">
+                     <div class="social-links">
+                        <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
+                           <li class="text-center pr-3">
+                              <a href="https://www.facebook.com/"><img src="assets/images/icon/08.png" class="img-fluid rounded" alt="facebook"></a>
+                           </li>
+                           <li class="text-center pr-3">
+                              <a href="https://www.google.com/intl/fr/gmail/about/"><img src="assets/images/icon/11.png" class="img-fluid rounded" alt="Google plus"></a>
+                           </li>
+                           <li class="text-center pr-3">
+                              <a href="https://www.linkedin.com"><img src="assets/images/icon/13.png" class="img-fluid rounded" alt="linkedin"></a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="social-info">
+                        <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
+                           <li class="text-center pl-3">
+                              <h6>recruitment offers</h6>
+                              <p class="mb-0">{{this.companyService.companyDto.recruitmentOffersDto.length }}</p>
+                           </li> 
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+       </div>
+
+
+
+
+       <div class="col-sm-12">
+         <div class="iq-card-body p-0">
+            <div class="row">
+               <div class="col-lg-5">
+
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                           <h4 class="card-title">Contact Information</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div class="row">
+                           <div class="col-3">
+                              <h6>Email</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.email}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Phone</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">(+216) {{this.companyService.companyDto.phone}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>State</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.state}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>City</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.city}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Zip Code</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.zipCode}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Address</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.address}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                           <h4 class="card-title">Basic Information</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div class="row">
+                           <div class="col-3">
+                              <h6>Name</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.name}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Activity Area</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.activity}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Description</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.description}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                           <h4 class="card-title">Websites and Social Links</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div class="row">
+                           <div class="col-3">
+                              <h6>Website</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.website}}</p>
+                           </div>
+                           <div class="col-3">
+                              <h6>Social Link</h6>
+                           </div>
+                           <div class="col-9">
+                              <p class="mb-0">{{this.companyService.companyDto.linkedIn}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                           <h4 class="card-title">Life Event</h4>
+                        </div>
+                        <div class="iq-card-header-toolbar d-flex align-items-center">
+                           <p class="m-0"><a href="javacsript:void();"> Create </a></p>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <div class="event-post position-relative">
+                                 <a href="javascript:void();"><img src="assets/images/page-img/07.jpg" alt="gallary-image" class="img-fluid rounded"></a>
+                                 <div class="job-icon-position">
+                                    <div class="job-icon bg-primary p-2 d-inline-block rounded-circle"><i class="ri-briefcase-line"></i></div>
+                                 </div>
+                                 <div class="iq-card-body text-center p-2">
+                                    <h5>Started New Job at Apple</h5>
+                                    <p>January 24, 2019</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-sm-12">
+                              <div class="event-post position-relative">
+                                 <a href="javascript:void();"><img src="assets/images/page-img/06.jpg" alt="gallary-image" class="img-fluid rounded"></a>
+                                 <div class="job-icon-position">
+                                    <div class="job-icon bg-primary p-2 d-inline-block rounded-circle"><i class="ri-briefcase-line"></i></div>
+                                 </div>
+                                 <div class="iq-card-body text-center p-2">
+                                    <h5>Freelance Photographer</h5>
+                                    <p>January 24, 2019</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div> 
+
+
+
+               </div>
+
+
+
+               <div class="col-lg-7">
+                   <app-add-recruitment-offer (onAddRecruitmentOffer)="onAddRecruitmentOffer($event)">
+                   </app-add-recruitment-offer> 
+                   <app-post-recruitment-offer  *ngFor="let recruitmentOffer of this.recruitmentService.ListrecruitmentOfferDto" [recruitmentOfferDto]="recruitmentOffer" ></app-post-recruitment-offer>
+               </div>
+
+
+
+            </div>
+         </div>
+       </div>
+
+
+
+
+
+    </div>
+</div>
+<app-message-box-response *ngIf="this.stateMsgBoxAuth" 
+[state]="this.stateMsgBoxAuth"
+[msgReponse]="this.authService.msgReponseStatusDto"
+(onCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-response> 
+
+<app-message-box-upload-img
+*ngIf="this.stateBoxUploadImgCoverCompany" 
+[state]="this.stateBoxUploadImgCoverCompany"
+title="Uploading" text='Uploading a Cover to your company'
+(onYesNoEvent)="onYesNoEventUploadCoverImgCompany($event)"
+(fileValidate)="uploadCoverCompany($event)">
+</app-message-box-upload-img>
+
+
+
+<app-message-box-upload-img
+*ngIf="this.stateBoxUploadImgLogoCompany" 
+[state]="this.stateBoxUploadImgLogoCompany"
+title="Uploading" text='Uploading a Logo to your company'
+(onYesNoEvent)="onYesNoEventUploadLogoImgCompany($event)"
+(fileValidate)="uploadLogoCompany($event)">
+</app-message-box-upload-img>

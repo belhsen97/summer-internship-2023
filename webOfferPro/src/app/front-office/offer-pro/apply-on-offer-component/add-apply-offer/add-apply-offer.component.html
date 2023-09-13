@@ -1,0 +1,68 @@
+
+<div class="modal" [class]="state ? 'show' : 'fade'" style="display: block;" id="apply-offer-modal" tabindex="-1" role="dialog" aria-labelledby="apply-offer-modalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <div class="d-flex flex-row">
+             <div class="apply-offer-logo-img">
+               <!-- <img [src]="this.companyService.companyDto.logo.downloadURL" alt="userimg" class="avatar-60 rounded-circle img-fluid" >
+            --> 
+            </div>
+             <div class="my-auto ml-3" >
+             <h5 class="modal-title text-center" id="apply-offer-modalLabel">Apply for {{recuirementOfferDto.title}} for {{recuirementOfferDto.campanyDto.name}}</h5>
+             </div>
+            </div>
+             <button type="button" class="btn btn-secondary"  (click) ="onClickOpenClose(false)"   data-dismiss="modal"><i class="ri-close-fill"></i></button>
+          </div>
+          <div class="modal-body">
+             <div class="d-flex align-items-center"> 
+
+
+               <form class="post-text ml-3" style="min-width: 80%;"     #ApplyOffer = "ngForm" (ngSubmit)="onClickOnSubmitApplyOffer(ApplyOffer)">
+                  <div class="form-group" *ngFor="let oneform of this.recuirementOfferDto.forms">
+                     <div *ngIf="oneform.type=='TEXT'">
+                         <p>{{ oneform.description }} :</p>
+                         <label class="ml-4" for="apply-on-offer-generic-input-{{oneform.id}}">{{ oneform.content }}</label>
+                         <input style="margin-left: 30px;" type="text"  
+                                class="form-control"  
+                               id="apply-on-offer-generic-input-{{oneform.id}}"   name="apply-on-offer-generic-{{oneform.id}}"
+                               [required]="oneform.required">
+                     </div>
+                     <div *ngIf="oneform.type=='DOCUMENT'">
+                        <p>{{ oneform.description }} :</p>
+                        <div style="margin-left: 30px;" class="custom-file">
+                             <input  type="file"  [required]="oneform.required" 
+                                 id="apply-on-offer-generic-input-{{oneform.id}}"   name="apply-on-offer-generic-{{oneform.id}}">  
+                             <label class="custom-file-label" for="apply-on-offer-generic-input-{{oneform.id}}">Choose your photo</label>
+                        </div>      
+                    </div>
+                  </div>
+                  <!--
+                   <div class="form-group">  
+                         <input type="text" class="form-control"   placeholder="Title here..."
+                                id="add-recruitment-offer-title-input" name="add-recruitment-offer-title"
+                                [(ngModel)]="recruitmentService.recruitmentOfferDto.title"  
+                                #title="ngModel"   required>
+                         <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( title.invalid && title.touched) " >
+                              <p  *ngIf="title.errors?.['required']"> Please enter a title in the text input</p> 
+                         </div> 
+                         <div class="valid" *ngIf="title.valid && title.touched" >
+                              <p >title validate.</p>
+                         </div> 
+                    </div>
+                  -->
+                  <button type="submit" class="btn btn-primary d-block w-100 mt-3">Apply</button>
+               </form>
+
+
+
+             </div>
+             <hr>
+
+             <hr>
+
+           
+          </div>
+       </div>
+    </div>
+ </div>

@@ -1,0 +1,48 @@
+<!--<p>sidebar works!</p>-->
+<div class="iq-sidebar">
+    <div id="sidebar-scrollbar">
+       <nav class="iq-sidebar-menu">
+          <ul id="iq-sidebar-toggle" class="iq-menu">
+            <li>
+               <a href="#profile-account-collapse" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false">
+                  <i class="las la-user"></i><span>Profile</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+               <ul id="profile-account-collapse" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                  <li class="ml-3"><a routerLink="/user/profile/{{username}}"><i class="las la-user"></i>Account</a></li>
+                  <li class="ml-3"><a routerLink="/user/account/update-profile"><i class="ri-edit-line"></i>Edit</a></li>
+                  <li class="ml-3"><a routerLink="/forgot-password"><i class="ri-lock-line"></i>Forgot-Password</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#company-collapse" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false">
+                  <i class="fa fa-building-o"></i><span>company</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+               <ul id="company-collapse" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                  <li class="ml-3"><a routerLink="/company/details" [queryParams]="{ Name: this.nameCompany}"><i class="fa fa-bookmark-o"></i>Detailed</a></li>
+                  <li class="ml-3"><a routerLink="/company/edit"><i class="ri-edit-line"></i>Edit</a></li>
+               </ul>
+            </li>
+            <li>
+               <a href="#mailbox" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-mail-line"></i><span>Email</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+               <ul id="mailbox" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                  <!--<li><a href="app/index.html"><i class="ri-inbox-line"></i>Inbox</a></li>-->
+                  <li><a  routerLink="/email/compose" ><i class="ri-edit-line"></i>Email Compose</a></li>
+               </ul>
+            </li>
+             <li>
+                <a routerLink="/recruitment-offer/search" [queryParams]="{ key: 'All'}" class="iq-waves-effect"><i class="las la-newspaper"></i><span>News Offer</span></a>
+             </li>
+             <li>
+                <a routerLink="/list/profiles"   class="iq-waves-effect"><i class="las la-user-friends"></i><span>Accounts List</span></a>
+             </li>
+             <li>
+                <a href="notification.html" class="iq-waves-effect"><i class="las la-bell"></i><span>Notification</span></a>
+             </li>
+             <li>
+                <a href="file.html" class="iq-waves-effect"><i class="las la-file"></i><span>Files</span></a>
+             </li>
+
+             
+          </ul>
+       </nav>
+       <div class="p-3"></div>
+    </div>
+ </div>

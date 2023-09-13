@@ -1,0 +1,22 @@
+<div role="dialog" tabindex="-1" class="modal " [class]="state ? 'show' : 'fade'" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered " [class]="size" role="document"  >
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-start" >
+              <i class="fa "
+               [class]="msgReponse.status  == SUCCESSFUL ? 'fa-check-circle-o' : msgReponse.status  == UNSUCCESSFUL ? 'fa-exclamation-circle' : msgReponse.status  == ERROR ?  'fa-times-circle' : 'fa-info-circle'"
+               [style]="{color: (msgReponse.status   == SUCCESSFUL ? '#50B5FF' : msgReponse.status  == UNSUCCESSFUL ? '#ffc107' : msgReponse.status  == ERROR ?  '#D9534F' : '#50B5FF')}"></i>
+                <h4 class="modal-title" >{{msgReponse.title}}</h4> </div>
+            <div class="modal-body">
+                <div class="d-flex flex-row float-left">
+                    <p>{{msgReponse.message}}<br /></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click) ="onClickNo()" class="btn " type="button"  
+                [class]="(msgReponse.status  == SUCCESSFUL ? 'btn-primary' : msgReponse.status  == UNSUCCESSFUL ? 'btn-warning' : msgReponse.status  == ERROR ?  'btn-danger' : 'btn-primary')"
+                 >close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

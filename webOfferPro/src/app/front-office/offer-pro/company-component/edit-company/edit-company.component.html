@@ -1,0 +1,241 @@
+<div class="row">
+    <div class="col-lg-6">
+
+       <div class="iq-card">
+          <div class="iq-card-header d-flex justify-content-between">
+             <div class="iq-header-title">
+                <h4 class="card-title">Basic Information</h4>
+             </div>
+          </div>
+          <div class="iq-card-body">
+             <div class="acc-edit">
+                <form  #editBasicInfoForm = "ngForm" (ngSubmit)="onClickOnSubmitEditBasicInfo(editBasicInfoForm)">
+
+                   <div class="form-group">
+                    <label for="company-BasicInfo-name-input">Name:</label>
+                    <input type="text" class="form-control" id="company-BasicInfo-name-input" value="alex"
+                    [(ngModel)]="companyService.companyDto.name"  name="edit-company-BasicInfo-name"
+                       #name="ngModel" required> 
+                    <div class="invalid" *ngIf="editBasicInfoForm.submitted || ( name.invalid && name.touched) " >
+                         <p  *ngIf="name.errors?.['required']">Please enter a name in the text input.</p>
+                    </div> 
+                    <div class="valid" *ngIf="name.valid && name.touched" >
+                         <p >name validate.</p>
+                    </div> 
+                   </div>
+
+                   <div class="form-group">
+                    <label for="company-BasicInfo-activity-input">Activity:</label>
+                    <select class="form-control" id="company-BasicInfo-activity-input"
+                    name="edit-company-BasicInfo-activity" 
+                    [(ngModel)]="companyService.companyDto.activity" #activityarea="ngModel" required > 
+                       <optgroup label="Activity area"> 
+                          <option *ngFor="let optionActivityArea of companyService.listActivityArea" [value]="optionActivityArea.value" [selected] = "optionActivityArea?.value === companyService.companyDto.activity">{{ optionActivityArea.label }}</option> 
+                      </optgroup>
+                    </select>
+                    <div class="invalid" *ngIf="editBasicInfoForm.submitted || ( activityarea.invalid && activityarea.touched) " >
+                       <p  *ngIf="activityarea.errors?.['required']">Please enter a activity area in the text input.</p>
+                  </div> 
+                  <div class="valid" *ngIf="activityarea.valid && activityarea.touched" >
+                       <p >activity area validate.</p>
+                  </div> 
+                 </div>
+
+                   <div class="form-group">
+                               <label>Address:</label>
+                               <textarea class="form-control" rows="5" style="line-height: 22px;"
+                               id="company-BasicInfo-description-input" value="alex"
+                               [(ngModel)]="companyService.companyDto.description"  name="edit-company-BasicInfo-description"
+                                  #description="ngModel" required>  
+                               37 Cardinal Lane
+                               Petersburg, VA 23803
+                               United States of America
+                               Zip Code: 85001
+                               </textarea>
+                               <div class="invalid" *ngIf="editBasicInfoForm.submitted || ( description.invalid && description.touched) " >
+                                <p  *ngIf="description.errors?.['required']">Please enter a description in the text area.</p>
+                              </div> 
+                              <div class="valid" *ngIf="description.valid && description.touched" >
+                                <p >description validate.</p>
+                              </div> 
+                   </div>
+
+                   <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+             </div>
+          </div>
+       </div>
+
+       <div class="iq-card">
+        <div class="iq-card-header d-flex justify-content-between">
+           <div class="iq-header-title">
+              <h4 class="card-title">Websites and Social Links</h4>
+           </div>
+        </div>
+        <div class="iq-card-body">
+           <div class="acc-edit">
+              <form  #editWebsitesSocialLinksInfoForm = "ngForm" (ngSubmit)="onClickOnSubmitEditWebsitesSocialLinksInfoForm(editWebsitesSocialLinksInfoForm)">
+
+                 <div class="form-group">
+                  <label for="company-web-sociallink-info-website-input">Website :</label>
+                  <input type="text" class="form-control" id="company-web-sociallink-info-website-input" value="alex"
+                  [(ngModel)]="companyService.companyDto.website"  name="edit-company-web-sociallink-info-website"
+                     #website="ngModel">  
+                 </div>
+
+                 <div class="form-group">
+                    <label for="company-web-sociallink-info-name-input">linkedIn:</label>
+                    <input type="text" class="form-control" id="company-web-sociallink-info-name-input" value="alex"
+                    [(ngModel)]="companyService.companyDto.linkedIn"  name="edit-company-web-sociallink-info-name"
+                       #linkedIn="ngModel" required> 
+                    <div class="invalid" *ngIf="editWebsitesSocialLinksInfoForm.submitted || ( linkedIn.invalid && linkedIn.touched) " >
+                         <p  *ngIf="linkedIn.errors?.['required']">Please enter a linkedIn in the text input.</p>
+                    </div> 
+                    <div class="valid" *ngIf="linkedIn.valid && linkedIn.touched" >
+                         <p >linkedIn validate.</p>
+                    </div> 
+                   </div>
+
+                 <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+           </div>
+        </div>
+     </div>
+
+
+    </div>
+    <div class="col-lg-6">
+       <div class="iq-card">
+          <div class="iq-card-header d-flex justify-content-between">
+             <div class="iq-header-title">
+                <h4 class="card-title">Contact Information</h4>
+             </div>
+          </div>
+          <div class="iq-card-body">
+             <div class="acc-edit">
+                <form #editContactInfoForm = "ngForm" (ngSubmit)="onClickOnSubmitEditContactInfo(editContactInfoForm)">
+                   
+                    <div class="form-group">
+                            <label for="company-contactInfo-email-input">Email:</label>
+                            <input type="text" class="form-control" 
+                                   id="company-contactInfo-email-input" name="edit-company-BasicInfo-email"
+                                   [(ngModel)]="companyService.companyDto.email"  
+                                   #email="ngModel" pattern="^[a-z0-9]+@+[a-z0-9]+\.+[a-z]{3}$"  required>
+                            <div class="invalid" *ngIf="editContactInfoForm.submitted || ( email.invalid && email.touched) " >
+                                    <p  *ngIf="email.errors?.['required']"> Please enter a email in the text input</p>
+                                    <p  *ngIf="email.errors?.['pattern']"> pattern must be like abc@gmail.com</p>
+                            </div> 
+                            <div class="valid" *ngIf="email.valid && email.touched" >
+                                    <p >email validate.</p>
+                            </div> 
+                   </div>
+
+                   <div class="form-group">
+                    <label for="company-contactInfo-phone-input">Contact Number:</label> 
+                    <input type="number" class="form-control" id="company-contactInfo-phone-input"
+                           [(ngModel)]="companyService.companyDto.phone"  name="edit-company-BasicInfo-phone"
+                           #phone="ngModel" pattern="[0-9]{8}"  required> 
+                    <div class="invalid" *ngIf="editContactInfoForm.submitted || ( phone.invalid && phone.touched) " >
+                        <p  *ngIf="phone.errors?.['required']">Please enter a phone in the text input.</p>
+                        <p  *ngIf="phone.errors?.['pattern']">phone must 8 number</p>
+                    </div> 
+                    <div class="valid" *ngIf="phone.valid && phone.touched" >
+                        <p >phone validate.</p>
+                    </div>  
+                   </div>
+
+                   <div class="form-group">
+                      <label for="company-contactInfo-state-input">State Region:</label>
+                      <select class="form-control" id="company-contactInfo-state-input"
+                              name="edit-company-BasicInfo-state" [(ngModel)]="companyService.companyDto.state" #stateregion="ngModel" required > 
+                                 <optgroup label="24 States of tunisian"> 
+                                    <option *ngFor="let optionStateRegion of accountService.listStateRegion" [value]="optionStateRegion.value" [selected] = "optionStateRegion?.value === accountService.accountDto.state">{{ optionStateRegion.label }}</option> 
+                                </optgroup>
+                              </select>
+                              <div class="invalid" *ngIf="editContactInfoForm.submitted || ( stateregion.invalid && stateregion.touched) " >
+                                 <p  *ngIf="stateregion.errors?.['required']">Please enter a state region in the text input.</p>
+                            </div> 
+                            <div class="valid" *ngIf="stateregion.valid && stateregion.touched" >
+                                 <p >state region validate.</p>
+                            </div> 
+                   </div>
+
+                   <div class="form-group">
+                    <label for="company-contactInfo-city-input">City:</label>
+                    <input type="text" class="form-control" id="company-contactInfo-city-input" value="Atlanta"
+                    [(ngModel)]="companyService.companyDto.city"  name="edit-company-BasicInfo-city" #city="ngModel" required> 
+                    <div class="invalid" *ngIf="editContactInfoForm.submitted || ( city.invalid && city.touched) " >
+                      <p  *ngIf="city.errors?.['required']">Please enter a city in the text input.</p>
+                    </div> 
+                    <div class="valid" *ngIf="city.valid && city.touched" >
+                      <p >city validate.</p>
+                    </div> 
+                   </div>
+
+                   <div class="form-group">
+                    <label for="company-contactInfo-zip-code-input">Zip Code :</label>
+                    <input type="number" class="form-control" id="company-contactInfo-zip-code-input"
+                    [(ngModel)]="companyService.companyDto.zipCode"  name="edit-company-BasicInfo-zip-code"
+                    #zipCode="ngModel" pattern="[0-9]{4}"  required> 
+                    <div class="invalid" *ngIf="editContactInfoForm.submitted || ( zipCode.invalid && zipCode.touched) " >
+                      <p  *ngIf="zipCode.errors?.['required']">Please enter a zipCode in the text input.</p>
+                      <p  *ngIf="zipCode.errors?.['pattern']">zipCode must 4 number</p>
+                    </div> 
+                   <div class="valid" *ngIf="zipCode.valid && zipCode.touched" >
+                      <p >zipCode validate.</p>
+                   </div>  
+                   </div>
+
+                   <div class="form-group">
+                    <label for="company-contactInfo-address-input">Address:</label>
+                    <textarea class="form-control" rows="5" style="line-height: 22px;"
+                    id="company-contactInfo-address-input" value="alex"
+                    [(ngModel)]="companyService.companyDto.address"  name="edit-company-BasicInfo-address"
+                       #address="ngModel" required>  
+                    37 Cardinal Lane
+                    Petersburg, VA 23803
+                    United States of America
+                    Zip Code: 85001
+                    </textarea>
+                    <div class="invalid" *ngIf="editContactInfoForm.submitted || ( address.invalid && address.touched) " >
+                        <p  *ngIf="address.errors?.['required']">Please enter a address in the text area.</p>
+                      </div> 
+                      <div class="valid" *ngIf="address.valid && address.touched" >
+                        <p >address validate.</p>
+                      </div> 
+                   </div>
+
+                   <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ <app-message-box-response *ngIf="this.stateMsgBoxAuth" 
+ [state]="this.stateMsgBoxAuth"
+ [msgReponse]="this.companyService.msgReponseStatusDto"
+ (onCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-response> 
+
+ <app-message-box-confirmation-standart 
+ *ngIf="this.stateMsgBoxConfimEditBasicInfo" 
+[state]="this.stateMsgBoxConfimEditBasicInfo"
+title="Message" text="Do you want to change Basic Information ?"
+(onClickEvent)="onClickEventMsgConfimEditBasicInfo($event)" >
+</app-message-box-confirmation-standart>
+
+<app-message-box-confirmation-standart 
+*ngIf="this.stateMsgBoxConfimEditContactInfo" 
+[state]="this.stateMsgBoxConfimEditContactInfo"
+title="Message" text="Do you want to change Contact Information ?"
+(onClickEvent)="onClickEventMsgConfimEditContactInfo($event)" >
+</app-message-box-confirmation-standart>
+
+<app-message-box-confirmation-standart 
+*ngIf="this.stateMsgBoxConfimEditWebsitesSocialLinksInfo" 
+[state]="this.stateMsgBoxConfimEditWebsitesSocialLinksInfo"
+title="Message" text="Do you want to change Websites and Social Links ?"
+(onClickEvent)="onClickEventMsgConfimEditWebsitesSocialLinksInfo($event)" >
+</app-message-box-confirmation-standart>
+

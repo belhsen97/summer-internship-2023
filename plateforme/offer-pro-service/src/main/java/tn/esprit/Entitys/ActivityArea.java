@@ -1,0 +1,30 @@
+package tn.esprit.Entitys;
+
+public enum ActivityArea {
+    CALL_CENTERS,
+    TRAINING,
+            HUMAN_RESSOURCES,
+    ENGINEERING,
+            MARKETING,
+    COMPUTER_SCIENCE,
+            TELECOMMUNICATIONS,
+    INDUSTRY,
+            INFORMATION_TECHNOLOGY,
+    TRADE,
+            SALE,
+    TRANSPORTATION,
+            SCIENCE,
+    RESEARCH,
+            REAL_ESTATE,
+    QUALITY_CONTROL,
+            PURCHASING_PROCUEMENT,
+    PHARMACEUTICALS,
+            CLIENT_SERVICES,
+    Media_JOURNALISM,
+            MANAGEMENT,
+    LEGAL,
+            INSURANCE,
+    INSTALLATION_MAINTENANCE_REPAIR,
+            HEALTH,
+            DESIGN
+}

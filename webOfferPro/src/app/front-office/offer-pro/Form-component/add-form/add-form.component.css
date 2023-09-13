@@ -1,0 +1,30 @@
+i {
+    font-size: 35px;
+    margin-right: 5px;
+    color:#50B5FF;
+  }
+
+p {
+    margin-top: 12.5px;
+    margin-left: 12.5px;
+  }
+h4 {
+    font-size: 20px;
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+.invalid {
+  color:#DC3545;
+  font-size: 12px; 
+}
+.valid {
+  color:#28a745; 
+  font-size: 12px;
+}
+
+
+
+.modal-body-custome{
+  max-height: 300px;
+  /*overflow-y: auto;*/
+}

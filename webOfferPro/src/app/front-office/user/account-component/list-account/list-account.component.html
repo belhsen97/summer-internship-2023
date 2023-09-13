@@ -1,0 +1,84 @@
+
+<div class="row">
+    <div class="col">
+
+
+<div class="header-for-bg">
+    <div class="background-header position-relative">
+       <img src="assets/images/page-img/profile-bg3.jpg" class="img-fluid w-100" alt="header-bg">
+       <div class="title-on-header">
+          <div class="data-block">
+             <h2>Account Lists</h2>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- Page Content  -->
+ <div id="content-page" class="content-page">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6" *ngFor="let accountDto of accountService.ListAccounts">
+             <div class="iq-card">
+                <div class="iq-card-body profile-page p-0">
+                   <div class="profile-header-image">
+                      <div class="cover-container">
+                         <img [src]="this.accountService.getLastPhotoProfile(accountDto.attachementsDto, this.accountService.category_coverprofile)" alt="profile-bg" class="rounded img-fluid w-100">
+                      </div>
+                      <div class="profile-info p-4">
+                         <div class="user-detail">
+                            <div class="d-flex flex-wrap justify-content-between align-items-start">
+                               <div class="profile-detail d-flex">
+                                  <div class="custom-profile-img rounded-circle ">
+                                     <img [src]="this.accountService.getLastPhotoProfile(accountDto.attachementsDto, this.accountService.category_photoprofile)" alt="custom-profile-img"    />
+                                  </div>
+                                  <div class="user-data-block">
+                                     <h4 class="">{{(accountDto.firstname == null ? "vide" : accountDto.firstname)}} {{(accountDto.lastname == null ? "vide" : accountDto.lastname)}}</h4>
+                                     <h6>@{{(accountDto.userDto.role == null ? "vide" : accountDto.userDto.role)}}</h6>
+                                     <p>{{accountDto.state}}, {{accountDto.city}}, {{accountDto.address}}</p>
+                                  </div>
+                               </div>
+                               <button type="submit" class="btn btn-primary">Following</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-md-6">
+             <div class="iq-card">
+                <div class="iq-card-body profile-page p-0">
+                   <div class="profile-header-image">
+                      <div class="cover-container">
+                         <img src="assets/images/page-img/profile-bg1.jpg" alt="profile-bg" class="rounded img-fluid w-100">
+                      </div>
+                      <div class="profile-info p-4">
+                         <div class="user-detail">
+                            <div class="d-flex flex-wrap justify-content-between align-items-start">
+                               <div class="profile-detail d-flex">
+                                  <div class="profile-img pr-4">
+                                     <img src="assets/images/user/06.jpg" alt="profile-img" class="avatar-130 img-fluid" />
+                                  </div>
+                                  <div class="user-data-block">
+                                     <h4 class="">Paul Molive</h4>
+                                     <h6>@developer</h6>
+                                     <p>Lorem Ipsum is simply dummy text of the</p>
+                                  </div>
+                               </div>
+                               <button type="submit" class="btn btn-primary">Following</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+
+</div>
+</div>
+

@@ -1,0 +1,18 @@
+<div role="dialog" tabindex="-1" class="modal" [class]="state ? 'show' : 'fade'" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-start" >
+              <i class="fa fa-question-circle"></i>
+                <h4 class="modal-title">{{title}}</h4></div>
+            <div class="modal-body">
+                <div class="d-flex flex-row float-left">
+                    <p>{{text}}<br /></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click) ="onClickYes()" class="btn btn-primary" type="button" >yes</button>
+                <button (click) ="onClickNo()" class="btn btn-light" type="button" data-dismiss="modal" >no</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+export enum StatusOffer {PUBLISHED='Published',PENDING ='Pending',EXPIRED ='Expired'}

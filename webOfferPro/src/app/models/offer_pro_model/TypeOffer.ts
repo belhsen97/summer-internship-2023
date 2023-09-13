@@ -1,0 +1,1 @@
+export enum TypeOffer {INTERNSHIP='INTERNSHIP',JOB ='JOB'}

@@ -1,0 +1,114 @@
+<div class="iq-card">
+    <div class="iq-card-body">
+       <div class="post-item">
+          <div class="user-post-data p-3">
+             <div class="d-flex flex-wrap">
+                <div class="media-support-user-img mr-3 post-logo-img">
+                   <img class="rounded-circle img-fluid" [src]="this.recruitmentOfferDto.campanyDto.logo.downloadURL" alt="">
+                </div>
+                <div class="media-support-info my-auto">
+                   <h4 class="mb-0 d-inline-block">
+                     <a [routerLink]="['/company/details']" [queryParams]="{ Name: this.recruitmentOfferDto.campanyDto.name }" href="#" class="">{{this.recruitmentOfferDto.campanyDto.name}}</a>
+                  </h4>
+                   <p class="ml-1 mb-0 d-inline-block">Add New Offer</p>
+                   <p class="mb-0">{{ this.recruitmentService.parseFormatDate ( this.recruitmentOfferDto.startDateTime)}}</p>
+                </div>
+
+
+
+
+                <div class="iq-card-post-toolbar">
+                   <div class="dropdown">
+                      <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                      <i class="ri-more-fill"></i>
+                      </span>
+                      <div class="dropdown-menu m-0 p-0">
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-save-line"></i></div>
+                               <div class="data ml-2">
+                                  <h6>Save Post</h6>
+                                  <p class="mb-0">Add this to your saved items</p>
+                               </div>
+                            </div>
+                         </a>
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
+                               <div class="data ml-2">
+                                  <h6>Edit Post</h6>
+                                  <p class="mb-0">Update your post and saved items</p>
+                               </div>
+                            </div>
+                         </a>
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-close-circle-line"></i></div>
+                               <div class="data ml-2">
+                                  <h6>Hide From Timeline</h6>
+                                  <p class="mb-0">See fewer posts like this.</p>
+                               </div>
+                            </div>
+                         </a>
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-delete-bin-7-line"></i></div>
+                               <div class="data ml-2">
+                                  <h6>Delete</h6>
+                                  <p class="mb-0">Remove thids Post on Timeline</p>
+                               </div>
+                            </div>
+                         </a>
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-notification-line"></i></div>
+                               <div class="data ml-2">
+                                  <h6>Notifications</h6>
+                                  <p class="mb-0">Turn on notifications for this post</p>
+                               </div>
+                            </div>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+
+
+
+
+             </div>
+          </div>
+          <div class="user-post"> 
+              <div class="post-content-img">       
+                   <img src="assets/images/page-img/offer-job-img-1.jpg" alt="post-image" class="mx-auto d-block" />
+              </div>
+              <div class="my-3 mx-2"> 
+                 <h4 class="text-primary mx-1" >
+                     <span class="cursor-pointer" (click)="goToDetailed()" >
+                        {{this.recruitmentOfferDto.title}}
+                     </span> 
+                 </h4>
+                 <p class="truncate-text ml-2">{{this.textDescription}}</p> 
+                 <div class="d-flex flex-row d-block">   
+                      <i class="fa fa-map-marker icon-header"></i>
+                      <span  class="my-auto">{{this.recruitmentOfferDto.campanyDto.state}}, {{this.recruitmentOfferDto.campanyDto.city}}, {{this.recruitmentOfferDto.campanyDto.address}}</span>
+                 </div> 
+              </div> 
+             <div class="d-flex flex-row justify-content-between">
+                 <div>
+                    <button type="button"  (click)="onClickApplyOnOffer()" class="btn btn-outline-primary mb-3 my-auto"><i class="fa fa-send"></i>Apply</button>
+                    <span> {{ this.recruitmentOfferDto.applyOnOffersDto.length}} Nb Apply</span>
+                </div>
+                <div>
+                  <button (click)="goToDetailed()" type="button" class="btn btn btn-outline-info mb-3 my-auto"><i class="fa fa-info"></i>More detailed</button>
+                </div>
+             </div>
+          </div> 
+       </div>
+    </div>
+ </div>
+ <app-add-apply-offer 
+*ngIf="this.stateBoxAddApplyOffer" 
+[state]="this.stateBoxAddApplyOffer"
+[recuirementOfferDto]="this.recruitmentService.recruitmentOfferDto"
+(onClickOpenCloseEvent)="onClickOpenCloseAddApplyOfferEvent($event)"
+></app-add-apply-offer>

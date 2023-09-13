@@ -1,0 +1,289 @@
+<!--<div id="post-modal-data" class="iq-card">-->
+<div  class="iq-card" id="post-modal-data">
+    <div class="iq-card-header d-flex justify-content-between">
+       <div class="iq-header-title">
+          <h4 class="card-title">Create Offer</h4>
+       </div>
+    </div>
+    <!--<div class="iq-card-body" data-toggle="modal" data-target="#post-modal">-->
+    <div class="iq-card-body" >
+       <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="user-img post-logo-img">
+                <img [src]="this.companyService.companyDto.logo.downloadURL" alt="userimg" class="avatar-60 rounded-circle img-fluid" >
+             </div>
+          </div>
+          <div class="col-sm-10">
+            <form class="post-text ml-3"  action="javascript:void();">
+                <input (click)="clickEventStateYes()" type="text" class="cursor-pointer form-control rounded" placeholder="Create new offer profetionnel here..." style="border:none;">
+             </form>
+          </div>
+        </div>  
+      </div>
+       <hr>
+       <ul class="post-opt-block d-flex align-items-center list-inline m-0 p-0">
+          <li (click)="clickEventStateYes()" class="cursor-pointer iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a>
+            <img style="width:24px;height: 24px;" src="assets/images/small/work-bag.png" alt="icon" class="img-fluid"> New Recruitment</li>
+       </ul>
+    </div>
+
+
+
+
+    <!--<div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" 
+    aria-hidden="true" style="display: none;">-->
+    <div class="modal"  [class]="stateX ? 'show' : 'fade'"  role="dialog" 
+    aria-labelledby="post-modalLabel" aria-hidden="true" 
+    tabindex="-1"  [style.display]="stateX ? 'block' : 'none'">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <div class="d-flex flex-row">
+                <div class="post-logo-img">
+                    <img [src]="this.companyService.companyDto.logo.downloadURL" alt="userimg" class="avatar-60 rounded-circle img-fluid" >
+                </div>
+                <div class="my-auto ml-3" >
+                <h5 class="modal-title" id="post-modalLabel">Create Post</h5>
+                </div>
+               </div>
+               <!-- <button type="button"   class="btn btn-secondary" data-dismiss="modal"><i class="ri-close-fill"></i></button>-->
+               <button type="button"   class="btn btn-secondary" (click)="clickEventStateNo()"><i class="ri-close-fill"></i></button>
+             </div>
+             <div class="modal-body">
+                <div class="d-flex align-items-center"> 
+                   <form class="post-text ml-3 w-100"     #AddRecruitmentOfferForm = "ngForm" (ngSubmit)="onClickOnSubmitAddRecruitmentOffer(AddRecruitmentOfferForm)">
+                    
+                    <div class="form-group">  
+                         <input type="text" class="form-control"   placeholder="Title here..."
+                                id="add-recruitment-offer-title-input" name="add-recruitment-offer-title"
+                                [(ngModel)]="recruitmentService.recruitmentOfferDto.title"  
+                                #title="ngModel"   required>
+                         <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( title.invalid && title.touched) " >
+                              <p  *ngIf="title.errors?.['required']"> Please enter a title in the text input</p> 
+                         </div> 
+                         <div class="valid" *ngIf="title.valid && title.touched" >
+                              <p >title validate.</p>
+                         </div> 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <label class="d-block">Select type Offer</label>
+                                <select class="form-control" id="add-recruitment-offer-type-offer-input"
+                                        name="add-recruitment-offer-type-offer" [(ngModel)]="recruitmentService.recruitmentOfferDto.typeOffer"
+                                        #typeoffer="ngModel" required > 
+                                        <optgroup label="type Offer">
+                                                  <option *ngFor="let optionTypeOffer of recruitmentService.listTypeOffer" [value]="optionTypeOffer.value" [selected] = "optionTypeOffer?.value === recruitmentService.recruitmentOfferDto.typeOffer">{{ optionTypeOffer.label }}</option> 
+                                        </optgroup>
+                                </select>
+                                <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( typeoffer.invalid && typeoffer.touched) " >
+                                     <p  *ngIf="typeoffer.errors?.['required']">Please enter a type offer in the text input.</p>
+                                </div>
+                                <div class="valid" *ngIf="typeoffer.valid && typeoffer.touched" >
+                                     <p >type offer validate.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                           <div class="form-group" >
+                            <label class="d-block">Select type contract</label>
+                                <select class="form-control" id="add-recruitment-offer-type-contract-input"
+                                        name="add-recruitment-type-contract-offer" [(ngModel)]="recruitmentService.recruitmentOfferDto.contractType"
+                                        #typecontract="ngModel" required > 
+                                        <optgroup label="type contract">
+                                                  <option *ngFor="let optiontypecontract of recruitmentService.listContractType" [value]="optiontypecontract.value" [selected] = "optiontypecontract?.value === recruitmentService.recruitmentOfferDto.contractType">{{ optiontypecontract.label }}</option> 
+                                        </optgroup>
+                                </select>
+                                <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( typecontract.invalid && typecontract.touched) " >
+                                     <p  *ngIf="typecontract.errors?.['required']">Please enter a  type contract in the text input.</p>
+                                </div>
+                                <div class="valid" *ngIf="typecontract.valid && typecontract.touched" >
+                                     <p > type contract validate.</p>
+                                </div> 
+                          </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6"> 
+                            <div class="form-group">
+                                 <label class="d-block">Gender:</label>
+                                  <div class="custom-control custom-radio custom-control-inline">
+                                      <input type="radio" [(ngModel)]="recruitmentService.recruitmentOfferDto.gender" 
+                                             value="{{ accountService.MALE }}"
+                                            [checked]="recruitmentService.recruitmentOfferDto.gender === accountService.MALE" 
+                                            id="add-recruitment-gender-male-input" name="add-recruitment-offer-gender-input" 
+                                            class="custom-control-input">
+                                      <label class="custom-control-label" for="add-recruitment-gender-male-input"> Male </label>
+                                   </div>
+                                  <div class="custom-control custom-radio custom-control-inline">
+                                      <input type="radio" [(ngModel)]="recruitmentService.recruitmentOfferDto.gender" 
+                                             value="{{ accountService.FEMALE }}"
+                                             [checked]="recruitmentService.recruitmentOfferDto.gender === accountService.FEMALE" 
+                                             id="add-recruitment-gender-female-input" 
+                                             name="add-recruitment-offer-gender-input" class="custom-control-input">
+                                      <label class="custom-control-label" for="add-recruitment-gender-female-input"> Female </label>
+                                  </div> 
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="add-recruitment-offer-vacant-jobs-input">vacant jobs  :</label>
+                                <input type="number" class="form-control" id="add-recruitment-offer-vacant-jobs-input"
+                                       [(ngModel)]="recruitmentService.recruitmentOfferDto.vacantJobs"  
+                                       name="add-recruitment-vacant-jobs" #vacantjobs="ngModel"
+                                        required appPositiveNumber> 
+                                <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( vacantjobs.invalid && vacantjobs.touched) " >
+                                      <p  *ngIf="vacantjobs.errors?.['required']">Please enter a vacant jobs  in the text input.</p>
+                                      <p *ngIf="vacantjobs.errors?.['appPositiveNumber']">Value must be a positive number greater than 0.</p>
+                                    </div> 
+                                <div class="valid" *ngIf="vacantjobs.valid && vacantjobs.touched" >
+                                    <p >vacant jobs  validate.</p>
+                                </div> 
+                            </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-sm-6">
+                           <div class="form-group"> 
+                               <input type="number" class="form-control" id="add-recruitment-offer-experience-from-input"
+                                      [(ngModel)]="recruitmentService.recruitmentOfferDto.experienceFrom"  
+                                      name="add-recruitment-experience-from" #experienceFrom="ngModel"
+                                        placeholder="experience From here..."    [appExperienceRangeValidator]="['add-recruitment-experience-from', 'add-recruitment-experience-to']" 
+                                        required> 
+                           </div>
+                       </div>
+                        <div class="col-sm-6">
+                            <div class="form-group"> 
+                                <input type="number" class="form-control" id="add-recruitment-offer-experience-to-input"
+                                       [(ngModel)]="recruitmentService.recruitmentOfferDto.experienceTo"  
+                                       name="add-recruitment-experience-to" #experienceTo="ngModel" 
+                                        placeholder="experience To here..."    [appExperienceRangeValidator]="['add-recruitment-experience-from', 'add-recruitment-experience-to']" required>               
+                                <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( experienceTo.invalid && experienceTo.touched) || ( experienceFrom.invalid && experienceFrom.touched) " >
+                                 <p  *ngIf="experienceFrom.errors?.['required']">Please enter a experience from  in the text input.</p> 
+                                 <p  *ngIf="experienceTo.errors?.['required']">Please enter a experience to  in the text input.</p> 
+                                      <p *ngIf="experienceTo.errors?.['experienceRange'] || experienceFrom.errors?.['experienceRange']">Experience To must be greater than Experience From.</p>
+                                    </div> 
+                                <div class="valid" *ngIf="experienceTo.valid && experienceTo.touched &&experienceFrom.valid && experienceFrom.touched" >
+                                    <p >experience to  validate.</p>
+                                </div> 
+                            </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <label for="add-recruitment-offer-vacant-jobs-input">Langue :</label>
+                              <input type="text" class="form-control"   placeholder="Langue here..."
+                                     id="add-recruitment-offer-langue-input" name="add-recruitment-offer-langue"
+                                     [(ngModel)]="recruitmentService.recruitmentOfferDto.langue"  
+                                     #langue="ngModel"> 
+                          </div>
+                       </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <label class="d-block">Select study Level</label>
+                              <select class="form-control" id="add-recruitment-offer-study-level-input"
+                                      name="add-recruitment-study-level-offer" [(ngModel)]="recruitmentService.recruitmentOfferDto.studyLevel"
+                                      #studylevel="ngModel" required > 
+                                      <optgroup label="study Level">
+                                                <option *ngFor="let optionstudylevel of recruitmentService.listStudyLevel" [value]="optionstudylevel.value" [selected] = "optionstudylevel?.value === recruitmentService.recruitmentOfferDto.studyLevel">{{ optionstudylevel.label }}</option> 
+                                      </optgroup>
+                              </select>
+                              <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( studylevel.invalid && studylevel.touched) " >
+                                   <p  *ngIf="studylevel.errors?.['required']">Please enter a  study level in the text input.</p>
+                              </div>
+                              <div class="valid" *ngIf="studylevel.valid && studylevel.touched" >
+                                   <p >study level validate.</p>
+                              </div> 
+                           </div>
+                        </div>
+                     </div>
+
+
+                    <div class="form-group">  
+                     <textarea class="form-control" rows="5"  placeholder="Description here..." 
+                     id="add-recruitment-offer-description-input" value="alex"
+                     [(ngModel)]="recruitmentService.recruitmentOfferDto.description"  name="add-recruitment-offer-description"
+                     #description="ngModel" required> 
+                     </textarea>
+                     <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( description.invalid && description.touched) " >
+                         <p  *ngIf="description.errors?.['required']">Please enter a description in the text area.</p>
+                       </div> 
+                       <div class="valid" *ngIf="description.valid && description.touched" >
+                         <p >description validate.</p>
+                       </div> 
+                    </div>
+
+                    <div class="form-group">  
+                     <textarea class="form-control" rows="5"  placeholder="Requirements here..." 
+                     id="add-recruitment-offer-requirements-input" value="alex"
+                     [(ngModel)]="recruitmentService.recruitmentOfferDto.requirements"  name="add-recruitment-offer-requirements"
+                     #requirements="ngModel"> 
+                     </textarea>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="text" onfocus="(this.type='date')"  class="form-control" placeholder="End Date Offer here"
+                        [(ngModel)]="recruitmentService.recruitmentOfferDto.endDateTime"
+                        name="add-recruitment-offer-end-date-time" id="add-recruitment-offer-end-date-time-input"
+                           #enddatetime="ngModel" appDateNow required> 
+                        <div class="invalid" *ngIf="AddRecruitmentOfferForm.submitted || ( enddatetime.invalid && enddatetime.touched) " >
+                             <p  *ngIf="enddatetime.errors?.['required']">Please enter a end date time in the text input.</p>
+                             <p  *ngIf="enddatetime.errors?.['dateNow']">end date time must be not date now</p>
+                           </div> 
+                        <div class="valid" *ngIf="enddatetime.valid && enddatetime.touched" >
+                             <p >end date time validate.</p>
+                        </div>
+                     </div>
+                     <!--<div id="add-recruitment-offer-forms-div" ></div>-->
+                     <div id="add-recruitment-offer-forms-div"    >
+                        <div class="alert text-white bg-primary" role="alert"  *ngFor="let _formDto_ of  this.formsDto">
+                           <div class="iq-alert-icon">
+                              <i class="ri-information-line"></i>
+                           </div>
+                           <div class="iq-alert-text">{{_formDto_.description}}<br><b>{{_formDto_.content}}</b> is type {{_formDto_.type}} and {{(_formDto_.required?"required":"not required")}}</div>
+                           <button type="button"  (click)=" onClickDeleteForm((_formDto_.id !== undefined?_formDto_.id:0))" class="close" data-dismiss="alert" aria-label="Close">
+                           <i class="ri-close-line"></i>
+                           </button>
+                        </div>
+                     </div>
+                      <span (click)="onClickOpenAddForms()"  class="btn btn-info d-block w-100 mt-3">Add Form</span>
+                      <button type="submit" class="btn btn-primary d-block w-100 mt-3">Post</button>
+                    </form>
+                </div>
+                <hr>
+ 
+                <hr>
+ 
+              
+             </div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+ </div>
+
+
+
+ <app-message-box-response *ngIf="this.stateMsgBoxAuth" 
+ [state]="this.stateMsgBoxAuth"
+ [msgReponse]="this.recruitmentService.msgReponseStatusDto"
+ (onCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-response>
+
+ <app-add-form *ngIf="this.stateOpenCloseAddFormBox" 
+ [state]="this.stateOpenCloseAddFormBox"
+ (onOpenCloseEvent)="onEventStateOpenCloseAddFormBox($event)"
+ (onFormDto)="onEventFormDtoAddFormBox($event)">
+</app-add-form>

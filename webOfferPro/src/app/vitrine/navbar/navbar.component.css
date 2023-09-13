@@ -1,0 +1,10 @@
+.photo-profile-container { 
+    position: relative;
+    width: 60px; /* Set the width and height as needed */
+    height: 60px;
+    overflow: hidden;
+ }
+ .photo-profile-container img {
+    width: 100%;
+    height: auto;  
+  }

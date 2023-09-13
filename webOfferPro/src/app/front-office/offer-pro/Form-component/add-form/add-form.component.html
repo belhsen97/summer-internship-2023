@@ -1,0 +1,90 @@
+<div role="dialog" tabindex="-1" class="modal" [class]="state ? 'show' : 'fade'" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document" >
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-start" >
+                <i class="fa fa-question-circle"></i>
+                <h4 class="modal-title">Add Forms</h4>
+                <button (click) ="onClickNo()"  class="close" type="button" >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body-custome">
+                <div class="d-flex align-items-center"> 
+                    <form class="post-text ml-3 w-100"  #AddFormOfferForm = "ngForm" (ngSubmit)="onClickOnSubmitAddFormOffer(AddFormOfferForm)">
+                        <div class="form-group">  
+                            <textarea class="form-control" rows="1"  placeholder="Description here..." 
+                            id="add-form-offer-description-input" value="alex"
+                            [(ngModel)]="formDto.description"  name="add-form-offer-description"
+                            #description="ngModel" required> 
+                            </textarea>
+                            <div class="invalid" *ngIf="AddFormOfferForm.submitted || ( description.invalid && description.touched)" >
+                                <p  *ngIf="description.errors?.['required']">Please enter a description in the text area.</p>
+                              </div> 
+                              <div class="valid" *ngIf="description.valid && description.touched" >
+                                <p >description validate.</p>
+                              </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="d-block">Select type field</label>
+                                    <select class="form-control" id="add-form-offer-type-field-input"
+                                            name="add-form-offer-type-field" [(ngModel)]="formDto.type"
+                                            #fieldtype="ngModel" required > 
+                                        <optgroup label="Field Type">
+                                                  <option *ngFor="let optionFieldType of serviceForm.listFieldType" [value]="optionFieldType.value" [selected] = "optionFieldType?.value === formDto.type">{{ optionFieldType.label }}</option> 
+                                        </optgroup>
+                                   </select>
+                                  <div class="invalid" *ngIf="AddFormOfferForm.submitted || ( fieldtype.invalid && fieldtype.touched) " >
+                                       <p  *ngIf="fieldtype.errors?.['required']">Please enter a type in the text input.</p>
+                                  </div>
+                                  <div class="valid" *ngIf="fieldtype.valid && fieldtype.touched" >
+                                      <p >type validate.</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <!--<div class="form-group">
+                                    <label class="d-block">Gender:</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                       <input type="radio" [(ngModel)]="formDto.required" value="{{ true }}" 
+                                       [checked]="formDto.required === true" id="pi-current-gender-male-input"
+                                        name="edit-global-account-pi-gender" class="custom-control-input">
+                                       <label class="custom-control-label" for="pi-current-gender-male-input"> required </label>
+                                    </div>
+                                 </div>-->
+                                 <div class="custom-control custom-switch custom-control-inline my-4" >
+                                    <input type="checkbox" class="custom-control-input" 
+                                    id="pi-current-gender-male-input" name="edit-global-account-pi-gender"
+                                    [(ngModel)]="formDto.required" >
+                                    <label class="custom-control-label" for="pi-current-gender-male-input">required or not </label>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group">  
+                            <input type="text" class="form-control"   placeholder="Content here..."
+                                   id="add-form-offer-content-input" name="add-form-offer-content"
+                                   [(ngModel)]="formDto.content "  
+                                   #content="ngModel"   required>
+                            <div class="invalid" *ngIf="AddFormOfferForm.submitted || ( content.invalid && content.touched) " >
+                                 <p  *ngIf="content.errors?.['required']"> Please enter a content in the text input</p> 
+                            </div> 
+                            <div class="valid" *ngIf="content.valid && content.touched" >
+                                 <p >content validate.</p>
+                            </div> 
+                       </div>
+
+                        <button type="submit" class="btn btn-primary d-block w-100 mt-3">add</button>
+                    </form>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+             <!-- <button (click) ="onClickYes()" class="btn btn-primary" type="button" >yes</button>
+                <button (click) ="onClickNo()" class="btn btn-light" type="button" data-dismiss="modal" >no</button>-->  
+            </div>
+        </div>
+    </div>
+</div>

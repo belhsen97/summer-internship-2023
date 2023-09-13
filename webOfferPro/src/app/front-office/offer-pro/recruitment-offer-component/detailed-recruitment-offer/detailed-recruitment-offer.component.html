@@ -1,0 +1,106 @@
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="iq-card">
+            
+           <div class="iq-card-header d-flex flex-row">
+
+            <div class="user-img cicular-logo-img">
+                <img  (click)="onClickGoToCompany(this.recruitmentService.recruitmentOfferDto.campanyDto.name)" [src]="this.recruitmentService.recruitmentOfferDto.campanyDto.logo.downloadURL" alt="userimg" class="avatar-60 img-fluid cursor-pointer" >
+             </div>
+              
+             <div class="iq-header-title">
+                 <h3 class="card-title font-weight-bold">{{ this.recruitmentService.recruitmentOfferDto.title}}</h3>
+              </div>
+           </div>
+           <div class="iq-card-body">
+              <div class="acc-privacy">
+                 <div class="data-privacy ml-4">
+                    <h5 class="mb-2">
+                     <span class="cursor-pointer" (click)="onClickGoToCompany(this.recruitmentService.recruitmentOfferDto.campanyDto.name)">{{ this.recruitmentService.recruitmentOfferDto.campanyDto.name}}</span>
+                     &nbsp;-&nbsp;
+                     <span>{{this.recruitmentService.recruitmentOfferDto.campanyDto.state}}, {{this.recruitmentService.recruitmentOfferDto.campanyDto.city}}, {{this.recruitmentService.recruitmentOfferDto.campanyDto.address}}</span>
+                    </h5>
+                    <h6 class="ml-2 mb-2">
+                        <span  style="color: #949494;">on the date : </span>
+                        <span>{{ this.recruitmentService.parseFormatDate (this.recruitmentService.recruitmentOfferDto.startDateTime) }}</span>
+                    </h6>
+                    <hr>
+                    <div class="d-flex  justify-content-between">
+                        <div>
+                           <button type="button" (click)="onClickApplyOnOffer()" class="btn btn-outline-primary mb-3 my-auto"><i class="fa fa-send"></i>Apply on offer</button>
+                           <span class="ml-2"> {{ this.recruitmentService.recruitmentOfferDto.applyOnOffersDto.length}} Nb Apply</span> 
+                       </div>
+                       <div class="ml-4">
+                        <i class="fa fa-hand-o-left icon-hand-left"></i>
+                        <span  class="ml-2" style="color: #449D44;" >Be the 1st to apply</span>
+                       </div>
+                    </div>
+                </div>
+                 <hr>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+       <div class="iq-card">
+          <div class="iq-card-body">
+             <div class="acc-privacy">
+                <div class="data-privacy">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td  style="width: 33.3%; border: 0;">
+                                <span class="font-weight-bold">Type Offer :&nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.typeOffer}}   
+                            </td>
+                            <td style="width: 33.3%; border: 0; width: 33.3%;border-right: 1px solid #dee2e6;border-left: 1px solid #dee2e6;">
+                                <span class="font-weight-bold">Vacant jobs :&nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.vacantJobs}} open position
+                            </td>
+                            <td style="width: 33.3%;border: 0;">
+                                <span class="font-weight-bold">Type of job desired:&nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.contractType}} 
+                             </td>
+                          </tr>
+                          <tr>
+                            <td style="width: 33.3%;">
+                                <span class="font-weight-bold">Experience : &nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.experienceFrom}} to {{ this.recruitmentService.recruitmentOfferDto.experienceTo}} years
+                            </td>
+                            <td style="width: 33.3%;border-right: 1px solid #dee2e6;border-left: 1px solid #dee2e6;">
+                                <span class="font-weight-bold">Level of study: &nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.studyLevel}} 
+                            </td>
+                            <td style="width: 33.3%;">
+                                <span class="font-weight-bold">Langue :  &nbsp;</span>{{ this.recruitmentService.recruitmentOfferDto.langue}} 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="width: 33.3%;border-right: 1px solid #dee2e6;">
+                                <span class="font-weight-bold">Gender :  &nbsp;</span>{{ ( this.recruitmentService.recruitmentOfferDto.gender == null ? "Indifferent" :  this.recruitmentService.recruitmentOfferDto.gender  ) }} 
+                             </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h6 class="font-weight-bold">Description of offer</h6>
+                      <p class="mx-4 my-2" [innerHtml]="this.recruitmentService.recruitmentOfferDto.description">
+                      </p>
+                      <h6 class="font-weight-bold mt-2">Exigences de l'emploi</h6>
+                      <p class="mx-4 my-2"  [innerHtml]="this.recruitmentService.recruitmentOfferDto.requirements">
+                      </p>
+                      <h6 class="font-weight-bold mt-2">Expiration date</h6>
+                      <p class="mx-4 my-2">
+                        {{ this.recruitmentService.parseFormatDate (this.recruitmentService.recruitmentOfferDto.endDateTime)}}
+                      </p>
+                   </div>
+                <hr>
+                <hr>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+<app-add-apply-offer 
+*ngIf="this.stateBoxAddApplyOffer" 
+[state]="this.stateBoxAddApplyOffer"
+[recuirementOfferDto]="this.recruitmentService.recruitmentOfferDto"
+(onClickOpenCloseEvent)="onClickOpenCloseAddApplyOfferEvent($event)"
+></app-add-apply-offer>

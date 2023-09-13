@@ -1,0 +1,444 @@
+<!--<p>edit-global-account works!</p>-->
+<div class="row">
+    <div class="col-lg-12">
+       <div class="iq-card">
+          <div class="iq-card-body p-0">
+             <div class="iq-edit-list">
+                <ul class="iq-edit-profile d-flex nav nav-pills">
+                   <li class="col-md-3 p-0">
+                      <a class="nav-link active" data-toggle="pill" href="#personal-information">
+                      Personal Information
+                      </a>
+                   </li>
+                   <li class="col-md-3 p-0">
+                      <a class="nav-link" data-toggle="pill" href="#chang-pwd">
+                      Change Password
+                      </a>
+                   </li>
+                   <li class="col-md-3 p-0">
+                      <a class="nav-link" data-toggle="pill" href="#emailandsms">
+                      Email and SMS
+                      </a>
+                   </li>
+                   <li class="col-md-3 p-0">
+                      <a class="nav-link" data-toggle="pill" href="#manage-contact">
+                      Manage Contact
+                      </a>
+                   </li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="col-lg-12">
+       <div class="iq-edit-list-data">
+          <div class="tab-content">
+
+
+
+
+
+             <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                <div class="iq-card">
+                   <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                         <h4 class="card-title">Personal Information</h4>
+                      </div>
+                   </div>
+                   <div class="iq-card-body">
+                      <form #PersonalInformationForm = "ngForm" (ngSubmit)="onClickOnSubmitPersonalInformation(PersonalInformationForm)">
+                         <div class="form-group d-flex flex-column align-items-center"> 
+                           
+                           <div class="d-flex flex-column justify-content-center"> 
+                            <div class="col">
+                               <div class="profile-img-edit">
+                                 <div class="photo-profile-container circle">
+                                  <img   [src]="this.accountService.photoProfile" alt="profile-pic">
+                                 </div>
+                                  <div (click) ="onClickOnUploadPersonalInformation()" class="p-image">
+                                     <i class="ri-pencil-line upload-button"></i>
+                                     <!--<input class="file-upload" type="file" accept="image/*"/>-->
+                                  </div>
+                               </div>
+                            </div> 
+                           </div>
+                           
+                           <div class="d-flex flex-column justify-content-center">
+                              <label>{{this.accountService.accountDto.userDto.role}} </label>
+                           </div>
+
+                         </div>
+                         <div class=" row align-items-center">
+                            <div class="form-group col-sm-6">
+                               <label for="pi-current-firstname-input">First Name:</label>
+                               <input type="text" class="form-control" id="pi-current-firstname-input" value="alex"
+                               [(ngModel)]="accountService.accountDto.firstname"  name="edit-global-account-pi-firstname"
+                                  #firstname="ngModel" required> 
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( firstname.invalid && firstname.touched) " >
+                                    <p  *ngIf="firstname.errors?.['required']">Please enter a firstname in the text input.</p>
+                               </div> 
+                               <div class="valid" *ngIf="firstname.valid && firstname.touched" >
+                                    <p >firstname validate.</p>
+                               </div> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                               <label for="pi-current-lastname-input">Last Name:</label>
+                               <input type="text" class="form-control" id="pi-current-lastname-input" value="Jhon"
+                               [(ngModel)]="accountService.accountDto.lastname"  name="edit-global-account-pi-lastname"
+                               #lastname="ngModel" required> 
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( lastname.invalid && lastname.touched) " >
+                                 <p  *ngIf="lastname.errors?.['required']">Please enter a lastname in the text input.</p>
+                               </div> 
+                               <div class="valid" *ngIf="lastname.valid && lastname.touched" >
+                                 <p >lastname validate.</p>
+                               </div> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                               <label for="pi-current-username-input">User Name:</label>
+                               <input type="text" class="form-control" id="pi-current-username-input" value="Bni@01"
+                               [(ngModel)]="accountService.accountDto.userDto.username"  name="edit-global-account-pi-username"
+                               #username="ngModel" required> 
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( username.invalid && username.touched) " >
+                                 <p  *ngIf="username.errors?.['required']">Please enter a username in the text input.</p>
+                               </div> 
+                               <div class="valid" *ngIf="username.valid && username.touched" >
+                                 <p >username validate.</p>
+                               </div> 
+                            </div>
+
+
+
+
+                            <div class="form-group col-sm-6">
+                               <label class="d-block">Gender:</label>
+                               <div class="custom-control custom-radio custom-control-inline">
+                                  <input type="radio" [(ngModel)]="accountService.accountDto.gender" 
+                                  value="{{ accountService.MALE }}" required
+                                  [checked]="accountService.accountDto.gender === accountService.MALE" id="pi-current-gender-male-input" name="edit-global-account-pi-gender" class="custom-control-input">
+                                  <label class="custom-control-label" for="pi-current-gender-male-input"> Male </label>
+                               </div>
+                               <div class="custom-control custom-radio custom-control-inline">
+                                  <input type="radio" [(ngModel)]="accountService.accountDto.gender" 
+                                  value="{{ accountService.FEMALE }}" required
+                                  [checked]="accountService.accountDto.gender === accountService.FEMALE" id="pi-current-gender-female-input" name="edit-global-account-pi-gender" class="custom-control-input">
+                                  <label class="custom-control-label" for="pi-current-gender-female-input"> Female </label>
+                               </div>
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted && (!accountService.accountDto.gender) " >
+                                 <p  *ngIf="!accountService.accountDto.gender">Please check one of two Genders.</p>
+                               </div> 
+                               <div class="valid" *ngIf="accountService.accountDto.gender" >
+                                 <p >Gender validate.</p>
+                               </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                              <label for="pi-current-cin-input">CIN :</label>
+                              <input type="number" class="form-control" id="pi-current-cin-input"
+                              [(ngModel)]="accountService.accountDto.cin"  name="edit-global-account-pi-cin"
+                              #cin="ngModel" pattern="[0-9]{8}"  required> 
+                              <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( cin.invalid && cin.touched) " >
+                                <p  *ngIf="cin.errors?.['required']">Please enter a cin in the text input.</p>
+                                <p  *ngIf="cin.errors?.['pattern']">cin must 8 number</p>
+                              </div> 
+                             <div class="valid" *ngIf="cin.valid && cin.touched" >
+                                <p >cin validate.</p>
+                             </div> 
+                            </div>
+                            <div class="form-group col-sm-6">
+                               <label for="pi-current-dateOfBirth-input">Date Of Birth:</label>
+                               <input type="date"  class="form-control" id="pi-current-dateOfBirth-input" value="1984-01-24"
+                               [(ngModel)]="accountService.accountDto.dateOfBirth"  name="edit-global-account-pi-dateOfBirth"
+                                  #dateOfBirth="ngModel" required> 
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( dateOfBirth.invalid && dateOfBirth.touched) " >
+                                    <p  *ngIf="dateOfBirth.errors?.['required']">Please enter a date of birth in the text input.</p>
+                               </div> 
+                               <div class="valid" *ngIf="dateOfBirth.valid && dateOfBirth.touched" >
+                                    <p >date of birth validate.</p>
+                               </div> 
+                            </div> 
+                            <div class="form-group col-sm-6">
+                              <label for="pi-current-state-input">State Region:</label>
+                              <select class="form-control" id="pi-current-state-input"
+                              name="edit-global-account-pi-state" [(ngModel)]="accountService.accountDto.state" #stateregion="ngModel" required > 
+                                 <optgroup label="24 States of tunisian"> 
+                                    <option *ngFor="let optionStateRegion of accountService.listStateRegion" [value]="optionStateRegion.value" [selected] = "optionStateRegion?.value === accountService.accountDto.state">{{ optionStateRegion.label }}</option> 
+                                </optgroup>
+                              </select>
+                              <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( stateregion.invalid && stateregion.touched) " >
+                                 <p  *ngIf="stateregion.errors?.['required']">Please enter a state region in the text input.</p>
+                            </div> 
+                            <div class="valid" *ngIf="stateregion.valid && stateregion.touched" >
+                                 <p >state region validate.</p>
+                            </div> 
+                           </div>
+                            <div class="form-group col-sm-6">
+                              <label for="pi-current-city-input">City:</label>
+                              <input type="text" class="form-control" id="pi-current-city-input" value="Atlanta"
+                              [(ngModel)]="accountService.accountDto.city"  name="edit-global-account-pi-city" #city="ngModel" required> 
+                              <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( city.invalid && city.touched) " >
+                                <p  *ngIf="city.errors?.['required']">Please enter a city in the text input.</p>
+                              </div> 
+                              <div class="valid" *ngIf="city.valid && city.touched" >
+                                <p >city validate.</p>
+                              </div> 
+                           </div>
+                           <div class="form-group col-sm-6">
+                              <label for="pi-current-zip-code-input">Zip Code :</label>
+                              <input type="number" class="form-control" id="pi-current-zip-code-input"
+                              [(ngModel)]="accountService.accountDto.zipCode"  name="edit-global-account-pi-zip-code"
+                              #zipCode="ngModel" pattern="[0-9]{4}"  required> 
+                              <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( zipCode.invalid && zipCode.touched) " >
+                                <p  *ngIf="zipCode.errors?.['required']">Please enter a zipCode in the text input.</p>
+                                <p  *ngIf="zipCode.errors?.['pattern']">zipCode must 4 number</p>
+                              </div> 
+                             <div class="valid" *ngIf="zipCode.valid && zipCode.touched" >
+                                <p >zipCode validate.</p>
+                             </div>  
+                            </div>
+                            <div class="form-group col-sm-12">
+                               <label>Address:</label>
+                               <textarea class="form-control" rows="5" style="line-height: 22px;"
+                               id="pi-current-address-input" value="alex"
+                               [(ngModel)]="accountService.accountDto.address"  name="edit-global-account-pi-address"
+                                  #address="ngModel" required>  
+                               37 Cardinal Lane
+                               Petersburg, VA 23803
+                               United States of America
+                               Zip Code: 85001
+                               </textarea>
+                               <div class="invalid" *ngIf="PersonalInformationForm.submitted || ( address.invalid && address.touched) " >
+                                 <p  *ngIf="address.errors?.['required']">Please enter a address in the text area.</p>
+                               </div> 
+                               <div class="valid" *ngIf="address.valid && address.touched" >
+                                 <p >address validate.</p>
+                               </div> 
+                            </div>
+
+                         </div>
+                         <button  type="submit" class="btn btn-primary mr-2">Submit</button> 
+                      </form>
+                   </div>
+                </div>
+             </div>
+
+
+
+
+
+
+             <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+                <div class="iq-card">
+                   <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                         <h4 class="card-title">Change Password</h4>
+                      </div>
+                   </div>
+                   <div class="iq-card-body">
+                      <form  #updatePasswordForm = "ngForm" (ngSubmit)="onClickSubmitUpdatePassword(updatePasswordForm)"   >
+                         <div class="form-group">
+                            <label for="cp-current-password-input">Current Password:</label>
+                            <span class="text-primary float-right cursor-pointer" (click)="onClickForgotPassword()">Forgot password?</span>
+                            <input type="Password" class="form-control"  value=""
+                            id="cp-current-password-input" name="edit-global-account-cp-current-password"
+                            [(ngModel)]="currentPassword"  
+                            #currentpassword="ngModel"   required>
+                            <div class="invalid" *ngIf="updatePasswordForm.submitted || ( currentpassword.invalid && currentpassword.touched) " >
+                              <p  *ngIf="currentpassword.errors?.['required']"> Please enter a current password in the text input</p>
+                          </div> 
+                           <div class="valid" *ngIf="currentpassword.valid && currentpassword.touched" >
+                              <p >Current password validate.</p>
+                           </div> 
+                         </div>
+                         <div class="form-group">
+                            <label for="cp-current-new-password-input">New Password:</label>
+                            <input type="Password" class="form-control"  
+                            id="cp-current-new-password-input" name="edit-global-account-cp-new-password"
+                            [(ngModel)]="newPassword"  
+                            #newpassword="ngModel" minlength="8" (keyup)="validatorPassword()" required>
+                            <div class="invalid" *ngIf="updatePasswordForm.submitted || ( newpassword.invalid && newpassword.touched) " >
+                              <p  *ngIf="newpassword.errors?.['required']"> Please enter a password in the text input</p>
+                              <p  *ngIf="newpassword.errors?.['minlength']"> minimum must be over 8 characters.</p>
+                              <p  *ngIf="isNotSamePassword"> New Password and  validate Password should be the same !</p> 
+                          </div> 
+                           <div class="valid" *ngIf="newpassword.valid && newpassword.touched && !isNotSamePassword" >
+                              <p >password validate.</p>
+                           </div> 
+                         </div>
+                         <div class="form-group">
+                            <label for="cp-current-confirm-password-input">Verify Password:</label>
+                            <input type="Password" class="form-control" 
+                            id="cp-current-confirm-password-input" name="edit-global-account-cp-confirm-password"
+                            [(ngModel)]="valodatePassword"  
+                            #confirmPassword="ngModel" minlength="8" (keyup)="validatorPassword()" required>
+                            <div class="invalid" *ngIf="updatePasswordForm.submitted || ( confirmPassword.invalid && confirmPassword.touched) " >
+                              <p  *ngIf="confirmPassword.errors?.['required']"> Please enter a validate password in the text input</p>
+                              <p  *ngIf="confirmPassword.errors?.['minlength']"> minimum must be over 8 characters.</p>
+                              <p  *ngIf="isNotSamePassword"> New Password and  validate Password should be the same !</p>
+                          </div> 
+                           <div class="valid" *ngIf="confirmPassword.valid && confirmPassword.touched && !isNotSamePassword" >
+                              <p >password validate.</p>
+                           </div> 
+                         </div>
+                         <button   type="submit" class="btn btn-primary mr-2">Submit</button> 
+                      </form>
+                   </div>
+                </div>
+             </div>
+
+
+             <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+                <div class="iq-card">
+                   <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                         <h4 class="card-title">Email and SMS</h4>
+                      </div>
+                   </div>
+                   <div class="iq-card-body">
+                      <form  >
+                         <div class="form-group row align-items-center">
+                            <label class="col-md-3" for="emailnotification">Email Notification:</label>
+                            <div class="col-md-9 custom-control custom-switch">
+                               <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
+                               <label class="custom-control-label" for="emailnotification"></label>
+                            </div>
+                         </div>
+                         <div class="form-group row align-items-center">
+                            <label class="col-md-3" for="smsnotification">SMS Notification:</label>
+                            <div class="col-md-9 custom-control custom-switch">
+                               <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
+                               <label class="custom-control-label" for="smsnotification"></label>
+                            </div>
+                         </div>
+                         <div class="form-group row align-items-center">
+                            <label class="col-md-3" for="npass">When To Email</label>
+                            <div class="col-md-9">
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email01">
+                                  <label class="custom-control-label" for="email01">You have new notifications.</label>
+                               </div>
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email02">
+                                  <label class="custom-control-label" for="email02">You're sent a direct message</label>
+                               </div>
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email03" checked="">
+                                  <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="form-group row align-items-center">
+                            <label class="col-md-3" for="npass">When To Escalate Emails</label>
+                            <div class="col-md-9">
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email04">
+                                  <label class="custom-control-label" for="email04"> Upon new order.</label>
+                               </div>
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email05">
+                                  <label class="custom-control-label" for="email05"> New membership approval</label>
+                               </div>
+                               <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="email06" checked="">
+                                  <label class="custom-control-label" for="email06"> Member registration</label>
+                               </div>
+                            </div>
+                         </div>
+                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                         <button type="reset" class="btn iq-bg-danger">Cancle</button>
+                      </form>
+                   </div>
+                </div>
+             </div>
+
+
+
+             <div class="tab-pane fade" id="manage-contact" role="tabpanel">
+                <div class="iq-card">
+                   <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                         <h4 class="card-title">Manage Contact</h4>
+                      </div>
+                   </div>
+                   <div class="iq-card-body">
+                      <form   #updateManageContact = "ngForm" (ngSubmit)="onClickSubmitManageContact(updateManageContact)" >
+                         <div class="form-group">
+                            <label for="mc-phone-input">Contact Number:</label> 
+                            <input type="number" class="form-control" id="mc-phone-input"
+                                   [(ngModel)]="accountService.accountDto.phone"  name="edit-global-account-mc-phone"
+                                   #phone="ngModel" pattern="[0-9]{8}"  required> 
+                            <div class="invalid" *ngIf="updateManageContact.submitted || ( phone.invalid && phone.touched) " >
+                                <p  *ngIf="phone.errors?.['required']">Please enter a phone in the text input.</p>
+                                <p  *ngIf="phone.errors?.['pattern']">phone must 8 number</p>
+                            </div> 
+                            <div class="valid" *ngIf="phone.valid && phone.touched" >
+                                <p >phone validate.</p>
+                            </div>  
+                         </div>
+                         <div class="form-group">
+                            <label for="mc-email-input">Email:</label>
+                            <input type="text" class="form-control" 
+                                   id="mc-email-input" name="edit-global-account-mc-email"
+                                   [(ngModel)]="accountService.accountDto.email"  
+                                   #email="ngModel" pattern="^[a-z0-9]+@+[a-z0-9]+\.+[a-z]{3}$"  required>
+                            <div class="invalid" *ngIf="updateManageContact.submitted || ( email.invalid && email.touched) " >
+                                    <p  *ngIf="email.errors?.['required']"> Please enter a email in the text input</p>
+                                    <p  *ngIf="email.errors?.['pattern']"> pattern must be like abc@gmail.com</p>
+                            </div> 
+                            <div class="valid" *ngIf="email.valid && email.touched" >
+                                    <p >email validate.</p>
+                            </div>  
+                         </div>
+                         <div class="form-group">
+                           <label for="mc-github-input">Github:</label>
+                           <input type="text" class="form-control" 
+                                  id="mc-github-input" name="edit-global-account-mc-github"
+                                  [(ngModel)]="accountService.accountDto.github"  
+                                  #github="ngModel"  >  
+                        </div>
+                        <div class="form-group">
+                           <label for="mc-linkedin-input">LinkedIn:</label>
+                           <input type="text" class="form-control"
+                                  id="mc-linkedin-input" name="edit-global-account-mc-linkedin"
+                                  [(ngModel)]="accountService.accountDto.linkedIn"  
+                                  #linkedin="ngModel"  >
+                        </div> 
+                         <button  type="submit" class="btn btn-primary mr-2">Submit</button>
+                      </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ 
+ <app-message-box-response *ngIf="this.stateMsgBoxAuth" 
+ [state]="this.stateMsgBoxAuth"
+ [msgReponse]="this.authService.msgReponseStatusDto"
+ (onCloseEvent)="closeEventstateMsgBoxAuth($event)" ></app-message-box-response> 
+
+ <app-message-box-upload-img
+ *ngIf="this.stateMsgBoxUploadImgPersonalInformation" 
+ [state]="this.stateMsgBoxUploadImgPersonalInformation"
+ title="Uploading" text='Uploading a photo to your profile'
+ (onYesNoEvent)="onYesNoEventUploadImgPersonalInformation($event)"
+ (fileValidate)="uploadImageProfile($event)"
+ ></app-message-box-upload-img>
+
+ <app-message-box-confirmation-standart 
+ *ngIf="this.stateMsgBoxConfimPersonalInformation" 
+[state]="this.stateMsgBoxConfimPersonalInformation"
+title="Message" text="Do you want to change you Personal Information ?"
+(onClickEvent)="onClickEventMsgConfimPersonalInformation($event)" >
+</app-message-box-confirmation-standart>
+
+<app-message-box-confirmation-standart *ngIf="this.stateMsgBoxConfimChangePassword" 
+[state]="this.stateMsgBoxConfimChangePassword"
+title="Message" text="Do you want to change you Password ?"
+(onClickEvent)="onClickEventMsgConfimChangePassword($event)" >
+</app-message-box-confirmation-standart>   
+
+<app-message-box-confirmation-standart *ngIf="this.stateMsgBoxConfimManageContact" 
+[state]="this.stateMsgBoxConfimManageContact"
+title="Message" text="Do you want to change you Manage Contact ?"
+(onClickEvent)="onClickEventMsgConfimManageContact($event)" >
+</app-message-box-confirmation-standart>
