@@ -1,4 +1,4 @@
-# summer-internship-2023
+# platform for managing professional offers ( summer internship 2023 )
 Development of a platform for managing professional offers (internships and jobs) based WEB.
 
 ## Back-End Based on Micro Services
