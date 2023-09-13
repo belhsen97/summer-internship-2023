@@ -9,6 +9,11 @@ Development of a platform for managing professional offers (internships and jobs
 * [offer-pro-service](https://github.com/belhsen97/summer-internship-2023/tree/master/plateforme/offer-pro-service/src/main/java/tn/esprit)
 * [user-service](https://github.com/belhsen97/summer-internship-2023/tree/master/plateforme/user-service/src/main/java/tn/esprit)
 
+### Built With
+* [![Angular][Angular.io]][Angular-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+* [![Typescript][Typescript.com]][Typescript-url]
 
 ## Contact
 Created by Bachouch Belhsen
