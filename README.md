@@ -11,4 +11,7 @@ Development of a platform for managing professional offers (internships and jobs
 
 
 ## Contact
-Created by [bachouch belhsen](belhsenbachouch97@gmail.com) - to contact me!
+Created by Bachouch Belhsen
+ * belhsenbachouch97@gmail.com
+* [Facebook](https://www.facebook.com/belhsen.bachouch)
+* [Linkedin](https://www.linkedin.com/in/belhsen-bachouch-2a0a72135/)
