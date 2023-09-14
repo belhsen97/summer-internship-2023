@@ -4,11 +4,12 @@ Development of a platform for managing professional offers (internships and jobs
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
+front-end :
 * [![Angular][Angular.io]][Angular-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
+back-end :
+* [![Spring Boot][Spring-Boot.io]][Spring-Boot-url]
 
 ## Back-End Based on Micro Services
 * [api-gateway](https://github.com/belhsen97/summer-internship-2023/tree/master/plateforme/api-gateway/src/main/java/tn/esprit)
@@ -47,4 +48,6 @@ Created by Bachouch Belhsen
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[JQuery-url]: https://jquery.com
+[Spring-Boot.io]: https://img.shields.io/badge/Spring-FFFFFF?style=for-the-badge&logo=spring&logoColor=green
+[Spring-Boot-url]: https://spring.io/projects/spring-boot
