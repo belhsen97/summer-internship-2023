@@ -4,11 +4,10 @@ Development of a platform for managing professional offers (internships and jobs
 
 ### Built With
 
-front-end :
+
 * [![Angular][Angular.io]][Angular-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
-back-end :
 * [![Spring Boot][Spring-Boot.io]][Spring-Boot-url]
 
 ## Back-End Based on Micro Services
