@@ -1,6 +1,8 @@
 # platform for managing professional offers ( summer internship 2023 )
 Development of a platform for managing professional offers (internships and jobs) based WEB.
 
+# About
+It is an application that allows you to apply for one or more job offers provided by the employer to university students and avoid the repetitive process when preparing the Specialists of the forms provided by the employer for the students to finish to fill them.
 
 ### Built With
 
